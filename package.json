@@ -1,0 +1,30 @@
+{
+  "name": "clippings",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "build": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mondain-dev/clippings.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mondain-dev/clippings/issues"
+  },
+  "homepage": "https://github.com/mondain-dev/clippings#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "glob": "^8.0.3",
+    "pug": "^3.0.2",
+    "rehype-stringify": "^9.0.3",
+    "remark": "^14.0.2",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-rehype": "^10.1.0"
+  }
+}
