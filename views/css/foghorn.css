@@ -148,3 +148,12 @@ article {
 	}
 } /* @iPhone */
 
+.frontmatter {
+	padding: 10px 10px;
+	font-family: sans-serif;
+	font-size: medium;
+	background-color: #eeeeee;
+	border-top-color: #000000;
+	border-top: 2px solid #888;
+	border-bottom: 2px solid #888;
+}

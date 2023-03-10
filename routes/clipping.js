@@ -31,14 +31,23 @@ router.get("/*", (req, res) => {
            .use(remarkMath)
            .use(extract, { yaml: yaml.parse, name: 'meta' })
            .use(frontmatter)
-        //    .use(() => (data) => {
-        //         data.children.filter( (e) => e.type=="yaml").forEach( e => {
-        //             e.type = "code"
-        //             e.lang = "yaml"
-        //         });
-        //         console.dir(data);
-        //     })
            .use(remarkGfm)
+           .use( () => (node, file) => {
+                node.children.filter( (e) => e.type=="yaml").forEach( e => {
+                    e.type = "html"
+                    e.value = "<div class=\"frontmatter\">" + 
+                        Object.keys(file.data.meta).reduce( (result, key) => {
+                            if(key == "url" || key == "archive"){
+                                result.push(key + ": <a href=\"" + file.data.meta[key] + "\">" + file.data.meta[key] + "</a>")
+                            }
+                            else{
+                                result.push(key + ": " + file.data.meta[key])
+                            }
+                            return result;
+                        }, 
+                        []).join("<br>") + "</div>"
+                });
+            })
            .use(remarkRehype, {"allowDangerousHtml": true})
            .use(rehypeRaw)
            .use(rehypeKatex)
